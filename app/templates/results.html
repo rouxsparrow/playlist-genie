@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="results-container">
+    <h2>Results for "{{ query }}"</h2>
+    <table>
+        <tr>
+            <th>Song</th>
+            <th>Artist</th>
+            <th>Album Artwork</th>
+        </tr>
+        {% for song in songs %}
+        <tr>
+            <td>{{ song.name | safe}}</td>
+            <td>{{ song.artist }}</td>
+            <td><img src="{{ song.album_art }}" alt="Album Art"></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="search-container">
+    <h1>Playlist Genie</h1>
+    <form action="/search" method="post">
+        <input type="text" name="text" placeholder="Search for a song...">
+        <button type="submit">Search</button>
+    </form>
+</div>
+{% endblock %}

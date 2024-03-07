@@ -2,7 +2,18 @@
 {% block content %}
 <div class="search-container">
     <h1>Playlist Genie</h1>
+    <h2>single word</h2>
+    <form action="/single_word_search" method="post">
+        <input type="text" name="text" placeholder="Search for a song...">
+        <button type="submit">Search</button>
+    </form>
+    <h2>combined word</h2>
     <form action="/search" method="post">
+        <input type="text" name="text" placeholder="Search for a song...">
+        <button type="submit">Search</button>
+    </form>
+    <h2>test threading</h2>
+    <form action="/thread" method="post">
         <input type="text" name="text" placeholder="Search for a song...">
         <button type="submit">Search</button>
     </form>

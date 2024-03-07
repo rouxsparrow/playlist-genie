@@ -136,6 +136,7 @@ def search_with_offset(query, access_token, offset):
             return {
                     'name': track['name'],
                     'artist': ", ".join(artist['name'] for artist in track['artists']),
+                    'song_uri': track['uri'],
                     'album_art': track['album']['images'][0]['url'] if track['album']['images'] else None
                 }, False  # Found a match, no re-auth needed
     return None, False  # No match found, no re-auth needed

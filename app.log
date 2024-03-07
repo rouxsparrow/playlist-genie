@@ -1,2 +1,117 @@
 WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 106-893-595
+INFO:werkzeug: * Debugger PIN: 644-906-792
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:56:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:56:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:56:39] "[36mGET /static/images/loading/roll.gif HTTP/1.1[0m" 304 -
+INFO:root:Lines: ['BQBTE_wyq6_i1lZrehj_Iq2dxJl0jFj_IrKwkPMgSLMm3A9SVYRDL_gmM72YttIK3q3xJQK15ZlqKcr0tZvX80eWUygnYVy1ocNRNQLZbY29FIUipgH0HtvLR7v0SQEJxrDhmkwCF-9sw9rEQZ1d6qnUHup1oYgQa1rnEUq_YRkTZKQ6HWblWDugtUu4rZLDzAnKmlGwKWOxdMyTScJvnzuWcJfWixy0n8NkZiJITm1g9pXtltAh_a2mNxGUXg\n', 'AQC85CHnoHc48aPs0xlOxCUYTqn_5JsIWpy21MHBVpIIyR08GP3nVAoyk52Pv4EBx2-cbBTDNHVxl-7u_3dslAQvsy9goJPhdQSDQnZoXwh5yUMhyfwvdh-KrGja3aivk0o\n', '1709828211.963922']
+INFO:root:Length of lines: 3
+INFO:root:Current time: 1709826999.064556
+INFO:root:Expiry time: 1709828211.963922
+INFO:root:Current time >= expiry time: False
+INFO:root:Found result: {'name': 'Hello', 'artist': 'Adele', 'song_uri': 'spotify:track:1Yk0cQdMLx5RzzFTYwmuld', 'album_art': 'https://i.scdn.co/image/ab67616d0000b2737b9888dc365b8f957c63df14'}
+INFO:root:Found result: {'name': 'Ho', 'artist': 'Ludacris', 'song_uri': 'spotify:track:1EsSm8qaR9Wtm1OgZXKi2n', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27384095c1ebcc1f46cb8cf1526'}
+INFO:root:Final results: [{'name': 'Hello', 'artist': 'Adele', 'song_uri': 'spotify:track:1Yk0cQdMLx5RzzFTYwmuld', 'album_art': 'https://i.scdn.co/image/ab67616d0000b2737b9888dc365b8f957c63df14'}, {'name': 'Ho', 'artist': 'Ludacris', 'song_uri': 'spotify:track:1EsSm8qaR9Wtm1OgZXKi2n', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27384095c1ebcc1f46cb8cf1526'}]
+INFO:root:Total time taken: 1.41 seconds
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:56:40] "POST /thread HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:56:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:56:52] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:56:52] "GET /static/css/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:56:52] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:57:03] "GET /static/images/loading/roll.gif HTTP/1.1" 200 -
+INFO:root:Lines: ['BQBTE_wyq6_i1lZrehj_Iq2dxJl0jFj_IrKwkPMgSLMm3A9SVYRDL_gmM72YttIK3q3xJQK15ZlqKcr0tZvX80eWUygnYVy1ocNRNQLZbY29FIUipgH0HtvLR7v0SQEJxrDhmkwCF-9sw9rEQZ1d6qnUHup1oYgQa1rnEUq_YRkTZKQ6HWblWDugtUu4rZLDzAnKmlGwKWOxdMyTScJvnzuWcJfWixy0n8NkZiJITm1g9pXtltAh_a2mNxGUXg\n', 'AQC85CHnoHc48aPs0xlOxCUYTqn_5JsIWpy21MHBVpIIyR08GP3nVAoyk52Pv4EBx2-cbBTDNHVxl-7u_3dslAQvsy9goJPhdQSDQnZoXwh5yUMhyfwvdh-KrGja3aivk0o\n', '1709828211.963922']
+INFO:root:Length of lines: 3
+INFO:root:Current time: 1709827023.906683
+INFO:root:Expiry time: 1709828211.963922
+INFO:root:Current time >= expiry time: False
+INFO:root:Found result: {'name': 'Hello', 'artist': 'Adele', 'song_uri': 'spotify:track:1Yk0cQdMLx5RzzFTYwmuld', 'album_art': 'https://i.scdn.co/image/ab67616d0000b2737b9888dc365b8f957c63df14'}
+INFO:root:Found result: {'name': 'HI', 'artist': 'Unghetto', 'song_uri': 'spotify:track:5li1WsP1RKSlvxKMHRYPWf', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27388b826443ca1d5de3d1317dc'}
+INFO:root:Final results: [{'name': 'Hello', 'artist': 'Adele', 'song_uri': 'spotify:track:1Yk0cQdMLx5RzzFTYwmuld', 'album_art': 'https://i.scdn.co/image/ab67616d0000b2737b9888dc365b8f957c63df14'}, {'name': 'HI', 'artist': 'Unghetto', 'song_uri': 'spotify:track:5li1WsP1RKSlvxKMHRYPWf', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27388b826443ca1d5de3d1317dc'}]
+INFO:root:Total time taken: 1.31 seconds
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:57:05] "POST /thread HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:57:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:57:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:57:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:57:16] "[36mGET /static/images/loading/roll.gif HTTP/1.1[0m" 304 -
+INFO:root:Lines: ['BQBTE_wyq6_i1lZrehj_Iq2dxJl0jFj_IrKwkPMgSLMm3A9SVYRDL_gmM72YttIK3q3xJQK15ZlqKcr0tZvX80eWUygnYVy1ocNRNQLZbY29FIUipgH0HtvLR7v0SQEJxrDhmkwCF-9sw9rEQZ1d6qnUHup1oYgQa1rnEUq_YRkTZKQ6HWblWDugtUu4rZLDzAnKmlGwKWOxdMyTScJvnzuWcJfWixy0n8NkZiJITm1g9pXtltAh_a2mNxGUXg\n', 'AQC85CHnoHc48aPs0xlOxCUYTqn_5JsIWpy21MHBVpIIyR08GP3nVAoyk52Pv4EBx2-cbBTDNHVxl-7u_3dslAQvsy9goJPhdQSDQnZoXwh5yUMhyfwvdh-KrGja3aivk0o\n', '1709828211.963922']
+INFO:root:Length of lines: 3
+INFO:root:Current time: 1709827036.633536
+INFO:root:Expiry time: 1709828211.963922
+INFO:root:Current time >= expiry time: False
+INFO:root:Found result: {'name': 'Hello', 'artist': 'J. Cole', 'song_uri': 'spotify:track:7L3yLy4K5CI7AWK2DfAbTv', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273c6e0948bbb0681ff29cdbae8'}
+INFO:root:Found result: {'name': 'HI', 'artist': 'Unghetto', 'song_uri': 'spotify:track:5li1WsP1RKSlvxKMHRYPWf', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27388b826443ca1d5de3d1317dc'}
+INFO:root:Found result: {'name': 'Hi', 'artist': 'Laufey', 'song_uri': 'spotify:track:46gvG4Btf56iVXysXR3KLn', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27348341e864d4b4881f56f01b4'}
+INFO:root:Final results: [{'name': 'Hello', 'artist': 'J. Cole', 'song_uri': 'spotify:track:7L3yLy4K5CI7AWK2DfAbTv', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273c6e0948bbb0681ff29cdbae8'}, {'name': 'HI', 'artist': 'Unghetto', 'song_uri': 'spotify:track:5li1WsP1RKSlvxKMHRYPWf', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27388b826443ca1d5de3d1317dc'}, {'name': 'Hi', 'artist': 'Laufey', 'song_uri': 'spotify:track:46gvG4Btf56iVXysXR3KLn', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27348341e864d4b4881f56f01b4'}]
+INFO:root:Total time taken: 1.88 seconds
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:57:18] "POST /thread HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:57:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:57:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:57:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:57:44] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:57:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:58:13] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:58:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:root:Lines: ['BQBTE_wyq6_i1lZrehj_Iq2dxJl0jFj_IrKwkPMgSLMm3A9SVYRDL_gmM72YttIK3q3xJQK15ZlqKcr0tZvX80eWUygnYVy1ocNRNQLZbY29FIUipgH0HtvLR7v0SQEJxrDhmkwCF-9sw9rEQZ1d6qnUHup1oYgQa1rnEUq_YRkTZKQ6HWblWDugtUu4rZLDzAnKmlGwKWOxdMyTScJvnzuWcJfWixy0n8NkZiJITm1g9pXtltAh_a2mNxGUXg\n', 'AQC85CHnoHc48aPs0xlOxCUYTqn_5JsIWpy21MHBVpIIyR08GP3nVAoyk52Pv4EBx2-cbBTDNHVxl-7u_3dslAQvsy9goJPhdQSDQnZoXwh5yUMhyfwvdh-KrGja3aivk0o\n', '1709828211.963922']
+INFO:root:Length of lines: 3
+INFO:root:Current time: 1709827114.635491
+INFO:root:Expiry time: 1709828211.963922
+INFO:root:Current time >= expiry time: False
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:58:34] "[36mGET /static/images/loading/roll.gif HTTP/1.1[0m" 304 -
+INFO:root:Found result: {'name': 'We', 'artist': '酸月亮 Sour Moon', 'song_uri': 'spotify:track:6yyqaX8qLVBYyr9M4EM3eO', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273d309b3609663e110bfdaf85c'}
+INFO:root:Found result: {'name': 'BRO', 'artist': 'CG5', 'song_uri': 'spotify:track:6QvfUnLycwqlqIj6YgYsGH', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27359a5885bec5ee48900520c35'}
+INFO:root:Found result: {'name': 'Yo', 'artist': 'Jeff Kaale', 'song_uri': 'spotify:track:2GsJFVq5Coy5Xzzip2TEKr', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273dde6bfcb83ce43d12d2d6623'}
+INFO:root:Found result: {'name': 'Comin', 'artist': 'Jang Yoon-Jeong', 'song_uri': 'spotify:track:3CA1gODNwN0cH3TyTFcGja', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273b2277067e0d3d86b005a5f50'}
+INFO:root:Found result: {'name': 'Holy', 'artist': 'Curtis Stephan', 'song_uri': 'spotify:track:5lPy5o3MykxfWzRqtdG4eV', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273b2f5e70a0cbf688970742680'}
+INFO:root:Found result: {'name': 'Molly', 'artist': 'Tyga, Cedric Gervais, Wiz Khalifa, Mally Mall', 'song_uri': 'spotify:track:0hdiDzQu1FsfaYM1NIL8ma', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27365f358fd6aaedb92bf28ca4f'}
+INFO:root:Final results: [{'name': 'We', 'artist': '酸月亮 Sour Moon', 'song_uri': 'spotify:track:6yyqaX8qLVBYyr9M4EM3eO', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273d309b3609663e110bfdaf85c'}, {'name': 'BRO', 'artist': 'CG5', 'song_uri': 'spotify:track:6QvfUnLycwqlqIj6YgYsGH', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27359a5885bec5ee48900520c35'}, {'name': 'Yo', 'artist': 'Jeff Kaale', 'song_uri': 'spotify:track:2GsJFVq5Coy5Xzzip2TEKr', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273dde6bfcb83ce43d12d2d6623'}, {'name': 'Comin', 'artist': 'Jang Yoon-Jeong', 'song_uri': 'spotify:track:3CA1gODNwN0cH3TyTFcGja', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273b2277067e0d3d86b005a5f50'}, {'name': 'Holy', 'artist': 'Curtis Stephan', 'song_uri': 'spotify:track:5lPy5o3MykxfWzRqtdG4eV', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273b2f5e70a0cbf688970742680'}, {'name': 'Molly', 'artist': 'Tyga, Cedric Gervais, Wiz Khalifa, Mally Mall', 'song_uri': 'spotify:track:0hdiDzQu1FsfaYM1NIL8ma', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27365f358fd6aaedb92bf28ca4f'}]
+INFO:root:Total time taken: 4.34 seconds
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:58:38] "POST /thread HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:58:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:root:Lines: ['BQBTE_wyq6_i1lZrehj_Iq2dxJl0jFj_IrKwkPMgSLMm3A9SVYRDL_gmM72YttIK3q3xJQK15ZlqKcr0tZvX80eWUygnYVy1ocNRNQLZbY29FIUipgH0HtvLR7v0SQEJxrDhmkwCF-9sw9rEQZ1d6qnUHup1oYgQa1rnEUq_YRkTZKQ6HWblWDugtUu4rZLDzAnKmlGwKWOxdMyTScJvnzuWcJfWixy0n8NkZiJITm1g9pXtltAh_a2mNxGUXg\n', 'AQC85CHnoHc48aPs0xlOxCUYTqn_5JsIWpy21MHBVpIIyR08GP3nVAoyk52Pv4EBx2-cbBTDNHVxl-7u_3dslAQvsy9goJPhdQSDQnZoXwh5yUMhyfwvdh-KrGja3aivk0o\n', '1709828211.963922']
+INFO:root:Length of lines: 3
+INFO:root:Current time: 1709827134.024876
+INFO:root:Expiry time: 1709828211.963922
+INFO:root:Current time >= expiry time: False
+INFO:root:Playlist name: embemapnhucuc
+INFO:root:Endpoint: https://api.spotify.com/v1/users/rouxsparrow/playlists
+INFO:root:Payload: {"name": "embemapnhucuc", "description": "Created with Playlist Genie", "public": true}
+INFO:root:Headers: {'Authorization': 'Bearer BQBTE_wyq6_i1lZrehj_Iq2dxJl0jFj_IrKwkPMgSLMm3A9SVYRDL_gmM72YttIK3q3xJQK15ZlqKcr0tZvX80eWUygnYVy1ocNRNQLZbY29FIUipgH0HtvLR7v0SQEJxrDhmkwCF-9sw9rEQZ1d6qnUHup1oYgQa1rnEUq_YRkTZKQ6HWblWDugtUu4rZLDzAnKmlGwKWOxdMyTScJvnzuWcJfWixy0n8NkZiJITm1g9pXtltAh_a2mNxGUXg', 'Content-Type': 'application/json'}
+INFO:root:Playlist info: {'collaborative': False, 'description': 'Created with Playlist Genie', 'external_urls': {'spotify': 'https://open.spotify.com/playlist/0IOFahlcRkU6UI3HKVEu7M'}, 'followers': {'href': None, 'total': 0}, 'href': 'https://api.spotify.com/v1/playlists/0IOFahlcRkU6UI3HKVEu7M', 'id': '0IOFahlcRkU6UI3HKVEu7M', 'images': [], 'primary_color': None, 'name': 'embemapnhucuc', 'type': 'playlist', 'uri': 'spotify:playlist:0IOFahlcRkU6UI3HKVEu7M', 'owner': {'href': 'https://api.spotify.com/v1/users/da3184dbaeda43bb891da1fffda0969a', 'id': 'da3184dbaeda43bb891da1fffda0969a', 'type': 'user', 'uri': 'spotify:user:da3184dbaeda43bb891da1fffda0969a', 'display_name': None, 'external_urls': {'spotify': 'https://open.spotify.com/user/da3184dbaeda43bb891da1fffda0969a'}}, 'public': True, 'snapshot_id': 'NDEzLDc5NmVkYzU0NWI0NjdiMGEzZWMxNWRkNjI5ZDlhOGY0MjdjM2Q1NTk=', 'tracks': {'limit': 100, 'next': None, 'offset': 0, 'previous': None, 'href': 'https://api.spotify.com/v1/playlists/0IOFahlcRkU6UI3HKVEu7M/tracks', 'total': 0, 'items': []}}
+INFO:root:Response: {'snapshot_id': 'MixkNjg3MTg4YzEzZTIxYmNkMDE2YWFkNTM3NzY2OGI3ZmM0ZmUzYzFj'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:58:54] "POST /create_playlist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:58:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:59:21] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:59:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:root:Lines: ['BQBTE_wyq6_i1lZrehj_Iq2dxJl0jFj_IrKwkPMgSLMm3A9SVYRDL_gmM72YttIK3q3xJQK15ZlqKcr0tZvX80eWUygnYVy1ocNRNQLZbY29FIUipgH0HtvLR7v0SQEJxrDhmkwCF-9sw9rEQZ1d6qnUHup1oYgQa1rnEUq_YRkTZKQ6HWblWDugtUu4rZLDzAnKmlGwKWOxdMyTScJvnzuWcJfWixy0n8NkZiJITm1g9pXtltAh_a2mNxGUXg\n', 'AQC85CHnoHc48aPs0xlOxCUYTqn_5JsIWpy21MHBVpIIyR08GP3nVAoyk52Pv4EBx2-cbBTDNHVxl-7u_3dslAQvsy9goJPhdQSDQnZoXwh5yUMhyfwvdh-KrGja3aivk0o\n', '1709828211.963922']
+INFO:root:Length of lines: 3
+INFO:root:Current time: 1709827183.452249
+INFO:root:Expiry time: 1709828211.963922
+INFO:root:Current time >= expiry time: False
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:59:43] "[36mGET /static/images/loading/roll.gif HTTP/1.1[0m" 304 -
+INFO:root:Found result: {'name': 'Embe', 'artist': 'M.', 'song_uri': 'spotify:track:0up8hQJPcUNDRJKPtg3oSz', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273ebabc8d655bd35941117c21d'}
+INFO:root:Found result: {'name': 'Map', 'artist': 'Lostboycrow, Taran Kootenhayoo', 'song_uri': 'spotify:track:7BLnPBOgAXuzwsdQ1qj4Xu', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273f50fc3ec5ea3ba8c254a41e6'}
+INFO:root:Found result: {'name': 'Nhu', 'artist': 'Frank Mimita', 'song_uri': 'spotify:track:4yyQS8XYEZRhMAFM29fCHc', 'album_art': 'https://i.scdn.co/image/ab67616d0000b2730d756f01f1f3638cc0857732'}
+INFO:root:Found result: {'name': 'CUC', 'artist': 'ORC', 'song_uri': 'spotify:track:4UvexXg4gv05vg0oYNqr4i', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273c353505b1a3418c29ee27379'}
+INFO:root:Final results: [{'name': 'Embe', 'artist': 'M.', 'song_uri': 'spotify:track:0up8hQJPcUNDRJKPtg3oSz', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273ebabc8d655bd35941117c21d'}, {'name': 'Map', 'artist': 'Lostboycrow, Taran Kootenhayoo', 'song_uri': 'spotify:track:7BLnPBOgAXuzwsdQ1qj4Xu', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273f50fc3ec5ea3ba8c254a41e6'}, {'name': 'Nhu', 'artist': 'Frank Mimita', 'song_uri': 'spotify:track:4yyQS8XYEZRhMAFM29fCHc', 'album_art': 'https://i.scdn.co/image/ab67616d0000b2730d756f01f1f3638cc0857732'}, {'name': 'CUC', 'artist': 'ORC', 'song_uri': 'spotify:track:4UvexXg4gv05vg0oYNqr4i', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273c353505b1a3418c29ee27379'}]
+INFO:root:Total time taken: 3.18 seconds
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:59:46] "POST /thread HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2024 23:59:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2024 00:00:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2024 00:00:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:root:Lines: ['BQBTE_wyq6_i1lZrehj_Iq2dxJl0jFj_IrKwkPMgSLMm3A9SVYRDL_gmM72YttIK3q3xJQK15ZlqKcr0tZvX80eWUygnYVy1ocNRNQLZbY29FIUipgH0HtvLR7v0SQEJxrDhmkwCF-9sw9rEQZ1d6qnUHup1oYgQa1rnEUq_YRkTZKQ6HWblWDugtUu4rZLDzAnKmlGwKWOxdMyTScJvnzuWcJfWixy0n8NkZiJITm1g9pXtltAh_a2mNxGUXg\n', 'AQC85CHnoHc48aPs0xlOxCUYTqn_5JsIWpy21MHBVpIIyR08GP3nVAoyk52Pv4EBx2-cbBTDNHVxl-7u_3dslAQvsy9goJPhdQSDQnZoXwh5yUMhyfwvdh-KrGja3aivk0o\n', '1709828211.963922']
+INFO:root:Length of lines: 3
+INFO:root:Current time: 1709827255.396117
+INFO:root:Expiry time: 1709828211.963922
+INFO:root:Current time >= expiry time: False
+INFO:root:Found result: {'name': 'Ando', 'artist': 'Dj Lord Amerikano, Ymen Mc', 'song_uri': 'spotify:track:6g2e2FGQurJXEoloasNcRf', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273c125c7304582a25b6827f854'}
+INFO:root:Found result: {'name': 'An', 'artist': 'Hà Anh Tuấn', 'song_uri': 'spotify:track:30ZRQVOjHgS0cl1l9tsZ8Y', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273ee3800adc099e439952eb06d'}
+INFO:root:Found result: {'name': 'Cut', 'artist': 'BONES', 'song_uri': 'spotify:track:5GxwCuVFulzmMOACGiDwZ7', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273eeeb8050799b61bf58df30bb'}
+INFO:root:Found result: {'name': 'Cho', 'artist': 'Ngọt', 'song_uri': 'spotify:track:54w3CUwFmj02KNZMuK1Cwn', 'album_art': 'https://i.scdn.co/image/ab67616d0000b2733ab401869655adcf234c0912'}
+INFO:root:Found result: {'name': 'Cham', 'artist': 'Patrick the Pan', 'song_uri': 'spotify:track:4UgF7M0Ulk2JXnxK3RfBdY', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27367010942afda502a0dfdd6e0'}
+INFO:root:Found result: {'name': 'song <br>tuong<br> not found', 'artist': 'sorry :<', 'album_art': '/static/images/me_sorry.jpg'}
+INFO:root:Final results: [{'name': 'Ando', 'artist': 'Dj Lord Amerikano, Ymen Mc', 'song_uri': 'spotify:track:6g2e2FGQurJXEoloasNcRf', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273c125c7304582a25b6827f854'}, {'name': 'An', 'artist': 'Hà Anh Tuấn', 'song_uri': 'spotify:track:30ZRQVOjHgS0cl1l9tsZ8Y', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273ee3800adc099e439952eb06d'}, {'name': 'Cut', 'artist': 'BONES', 'song_uri': 'spotify:track:5GxwCuVFulzmMOACGiDwZ7', 'album_art': 'https://i.scdn.co/image/ab67616d0000b273eeeb8050799b61bf58df30bb'}, {'name': 'Cho', 'artist': 'Ngọt', 'song_uri': 'spotify:track:54w3CUwFmj02KNZMuK1Cwn', 'album_art': 'https://i.scdn.co/image/ab67616d0000b2733ab401869655adcf234c0912'}, {'name': 'Cham', 'artist': 'Patrick the Pan', 'song_uri': 'spotify:track:4UgF7M0Ulk2JXnxK3RfBdY', 'album_art': 'https://i.scdn.co/image/ab67616d0000b27367010942afda502a0dfdd6e0'}, {'name': 'song <br>tuong<br> not found', 'artist': 'sorry :<', 'album_art': '/static/images/me_sorry.jpg'}]
+INFO:root:Total time taken: 6.34 seconds
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2024 00:01:01] "POST /thread HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2024 00:01:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2024 00:01:01] "GET /static/images/me_sorry.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2024 00:01:37] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2024 00:01:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -

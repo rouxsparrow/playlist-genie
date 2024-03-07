@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, request, session
-import requests, os, logging, sys, re
-from urllib.parse import quote  # For URL encoding the query
+from flask import Blueprint, render_template, request, session, redirect, url_for
+import requests, os, logging, sys, re, json
+import urllib.parse
 from dotenv import load_dotenv
 from flask import request, render_template
 from datetime import datetime, timedelta
@@ -8,46 +8,87 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 load_dotenv()
-logging.basicConfig(stream=sys.stderr, level=logging.INFO)
+logging.basicConfig(filename="app.log",filemode="w", level=logging.INFO)
 main = Blueprint('main', __name__)
 
 def authenticate_spotify():
     auth_url = "https://accounts.spotify.com/api/token"
-    response = requests.post(auth_url, {
-        'grant_type': 'client_credentials',
+    # logging.info(f"Auth code: {os.getenv('SPOTIFY_AUTHORIZATION_CODE')}")
+    headers = {'Authorization': f"Basic {os.getenv('SPOTIFY_CLIENT_ID')}:{os.getenv('SPOTIFY_CLIENT_SECRET')}"}
+    response = requests.post(auth_url, headers, {
+        'grant_type': 'authorization_code',
+        'code': os.getenv('SPOTIFY_AUTHORIZATION_CODE'),
+        'redirect_uri': os.getenv('REDIRECT_URI'),
         'client_id': os.getenv('SPOTIFY_CLIENT_ID'),
         'client_secret': os.getenv('SPOTIFY_CLIENT_SECRET'),
     })
+
     auth_data = response.json()
     access_token = auth_data.get('access_token')
+    refresh_token = auth_data.get('refresh_token')  # Save refresh token
     expires_in = auth_data.get('expires_in')  # Time in seconds until the token expires
 
     # Calculate the expiry time as a datetime object
     expiry_time = datetime.now() + timedelta(seconds=expires_in)
 
-    # Write the access token and its expiry time to a file
+    # Write the access token, refresh token, and its expiry time to a file
     with open(os.getenv('TOKEN_FILE_PATH'), 'w') as token_file:
         token_file.write(access_token + '\n')
+        token_file.write(refresh_token + '\n')  # Store the refresh token
         token_file.write(str(expiry_time.timestamp()))
 
     return access_token
 
+def refresh_access_token(refresh_token):
+    auth_url = "https://accounts.spotify.com/api/token"
+    response = requests.post(auth_url, {
+        'grant_type': 'refresh_token',
+        'refresh_token': refresh_token,
+        'client_id': os.getenv('SPOTIFY_CLIENT_ID'),
+        'client_secret': os.getenv('SPOTIFY_CLIENT_SECRET'),
+    })
+    auth_data = response.json()
+    access_token = auth_data.get('access_token')
+    expires_in = auth_data.get('expires_in', 3600)  # Use default 1 hour if not provided
+
+    # Calculate the new expiry time
+    expiry_time = datetime.now() + timedelta(seconds=expires_in)
+
+    # Rewrite the token file with the new access token while preserving the refresh token
+    with open(os.getenv('TOKEN_FILE_PATH'), 'w') as token_file:
+        token_file.write(access_token + '\n')
+        token_file.write(refresh_token + '\n')  # Re-store the refresh token
+        token_file.write(str(expiry_time.timestamp()))
+
+    return access_token
+
+
 def get_spotify_token():
     try:
-        # Attempt to read the access token and expiry time from the file
         with open(os.getenv('TOKEN_FILE_PATH'), 'r') as token_file:
-            access_token = token_file.readline().strip()
-            expiry_time = float(token_file.readline().strip())
+            lines = token_file.readlines()
+            logging.info(f"Lines: {lines}")
+            logging.info(f"Length of lines: {len(lines)}")
+            if len(lines) < 2:
+                raise ValueError("Token file is empty or invalid")
+            access_token = lines[0].strip()
+            refresh_token = lines[1].strip()  # Read the refresh token directly from lines
+            expiry_time = float(lines[2].strip())
 
         current_time = datetime.now().timestamp()
+        logging.info(f"Current time: {current_time}")
+        logging.info(f"Expiry time: {expiry_time}")
+        logging.info(f"Current time >= expiry time: {current_time >= expiry_time}")
         if current_time >= expiry_time:
-            # If the token is expired, re-authenticate and get a new token
-            return authenticate_spotify()
+            # Refresh the token if it has expired
+            return refresh_access_token(refresh_token)
         else:
             return access_token
-    except FileNotFoundError:
-        # If the token file does not exist, authenticate to create it
+    except (FileNotFoundError, ValueError):
+        # If the token file does not exist, empty then authenticate to create it
+        logging.info("Token file not found or invalid, re-authenticating")
         return authenticate_spotify()
+
 
 def search_spotify(query,access_token):
     # access_token = get_spotify_token()
@@ -73,11 +114,11 @@ def search_spotify(query,access_token):
                 return {
                     'name': track['name'],
                     'artist': ", ".join(artist['name'] for artist in track['artists']),
+                    'song_uri': track['uri'],
                     'album_art': track['album']['images'][0]['url'] if track['album']['images'] else None
                 }
         offset += limit
     return None 
-    # Return an empty list if no match is found
 
 def search_with_offset(query, access_token, offset):
     headers = {'Authorization': f'Bearer {access_token}'}
@@ -115,7 +156,6 @@ def search_thread(query, access_token):
                     return track  # Return the first match found
 
             offsets = [offset + 250 for offset in offsets]  # Increase each offset by 250 for the next iteration
-            logging.info(f"Retrying with new offsets: {offsets}")
     return None  # No match found after all attempts
 
 
@@ -163,10 +203,12 @@ def single_word_search():
     for word in words:
         result = search_spotify(word,access_token)
         if not result:
-            result = {'name': 'song <br>' + word + '<br> not found', 'artist': 'sorry :<', 'album_art': '/static/images/me_sorry.jpg'}
+            result = {'name': 'song <br><b>' + word + '</b><br> not found', 'artist': 'sorry :<', 'album_art': '/static/images/me_sorry.jpg'}
         logging.info(f"Found result: {result}")
         results.append(result)
     logging.info(f"Final results: {results}")
+    valid_results = [res for res in results if res['album_art'] != '/static/images/me_sorry.jpg']
+    session['results'] = valid_results
     global_end_time = time.time()
     logging.info(f"Total time taken: {global_end_time - global_start_time:.2f} seconds")
     # The result is either a list with one item or an empty list
@@ -223,7 +265,64 @@ def thread():
         logging.info(f"Found result: {result}")
         results.append(result)
     logging.info(f"Final results: {results}")
+    valid_results = [res for res in results if res['album_art'] != '/static/images/me_sorry.jpg']
+    session['results'] = valid_results
     global_end_time = time.time()
     logging.info(f"Total time taken: {global_end_time - global_start_time:.2f} seconds")
     # The result is either a list with one item or an empty list
     return render_template('results.html', songs=results, query=text)
+
+@main.route('/create_playlist', methods=['POST'])
+def create_playlist():
+    access_token = get_spotify_token()
+    user_id = 'rouxsparrow'
+    playlist_name = request.form['playlist_name']
+    logging.info(f"Playlist name: {playlist_name}")
+    # Create a new playlist
+    playlist_info = create_new_playlist(access_token, user_id, playlist_name)  
+    playlist_id = playlist_info['id']
+    playlist_url = playlist_info['external_urls']['spotify']
+    # Assuming you have a way to retrieve song URIs from the previous search results
+    song_uris = get_song_uris_from_session()
+
+    # Add songs to the playlist
+    response = add_songs_to_playlist(access_token, playlist_id, song_uris)  
+    logging.info(f"Response: {response}")
+    return render_template('playlist.html', playlist_url=playlist_url)
+
+def create_new_playlist(access_token, user_id, playlist_name):
+    """Create a new Spotify playlist for the user and return its ID."""
+    endpoint = f"https://api.spotify.com/v1/users/{user_id}/playlists"
+    logging.info(f"Endpoint: {endpoint}")
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json"
+    }
+    payload = json.dumps({
+        "name": playlist_name,
+        "description": "Created with Playlist Genie",
+        "public": True
+    })
+    logging.info(f"Payload: {payload}")
+    logging.info(f"Headers: {headers}")
+    response = requests.post(endpoint, headers=headers, data=payload)
+    playlist_info = response.json()
+    logging.info(f"Playlist info: {playlist_info}")
+    return playlist_info
+
+def add_songs_to_playlist(access_token, playlist_id, song_uris):
+    """Add songs to the specified Spotify playlist."""
+    endpoint = f"https://api.spotify.com/v1/playlists/{playlist_id}/tracks"
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json"
+    }
+    payload = json.dumps({
+        "uris": song_uris
+    })
+    response = requests.post(endpoint, headers=headers, data=payload)
+    return response.json()
+
+def get_song_uris_from_session():
+    return [song['song_uri'] for song in session['results']]
+

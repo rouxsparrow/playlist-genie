@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="search-container">
+<div id="loading"></div>
+<div class="search-container" id="content">
     <h1>Playlist Genie</h1>
-    <h2>single word</h2>
-    <form action="/single_word_search" method="post">
-        <input type="text" name="text" placeholder="Search for a song...">
-        <button type="submit">Search</button>
+    <p>🥳Enter a phrase - Get a playlist🥳</p>
+    <form action="/thread" method="post">
+        <input type="text" name="text" placeholder="heaven when i held you again...">
+        <br>
+        <button type="submit" onclick="loading()">Search</button>
     </form>
-    <h2>combined word</h2>
+    <!-- <h2>combined word</h2>
     <form action="/search" method="post">
         <input type="text" name="text" placeholder="Search for a song...">
         <button type="submit">Search</button>
@@ -16,6 +18,12 @@
     <form action="/thread" method="post">
         <input type="text" name="text" placeholder="Search for a song...">
         <button type="submit">Search</button>
-    </form>
+    </form> -->
 </div>
+<script type="text/javascript">// <![CDATA[
+    function loading(){
+        $("#loading").show();
+        $("#content").hide();       
+    }
+// ]]></script>
 {% endblock %}

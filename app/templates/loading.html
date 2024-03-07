@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        .progress-bar {
+            width: 0%;
+            height: 30px;
+            background-color: #4CAF50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            transition: width 0.5s;
+        }
+        .container {
+            width: 80%;
+            background-color: #ddd;
+            margin: auto;
+            overflow: hidden;
+        }
+        #funnyText {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="progressBar" class="progress-bar">0%</div>
+    </div>
+    <p id="funnyText">Let's get started...</p>
+    <div id="loadingScreen" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); color: white; text-align: center; padding-top: 20%;">
+        <div id="progressBar" style="width: 50%; height: 30px; background-color: #ddd; margin: auto;">
+            <div id="progressBarFill" style="width: 0%; height: 100%; background-color: #4CAF50;"></div>
+        </div>
+        <p id="funnyText" style="margin-top: 20px;">Let's find some music...</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("searchForm"); // Make sure your form has this ID
+            form.onsubmit = function(e) {
+                e.preventDefault();
+                const text = document.getElementById("searchInput").value; // Adjust based on your input field's ID
+                showLoadingScreen();
+        
+                // Start the AJAX request
+                fetch('/single_word_search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `text=${encodeURIComponent(text)}`
+                })
+                .then(response => response.text())
+                .then(html => {
+                    document.open();
+                    document.write(html);
+                    document.close();
+                })
+                .catch(error => {
+                    console.error('Error during search:', error);
+                    hideLoadingScreen();
+                });
+            };
+        });
+        
+        const funnyTexts = [
+            "Why don't scientists trust atoms? Because they make up everything!",
+            "Why did the gym close down? It just didn't work out!",
+            "Parallel lines have so much in common. It’s a shame they’ll never meet.",
+            "Why don’t skeletons fight each other? They don’t have the guts."
+        ];
+
+        let progressBarInterval = null;
+        let textChangeInterval = null;
+
+        function showLoadingScreen() {
+            document.getElementById("loadingScreen").style.display = "block";
+            updateProgressBar();
+            changeFunnyText();
+        }
+
+        function hideLoadingScreen() {
+            clearInterval(progressBarInterval);
+            clearInterval(textChangeInterval);
+            document.getElementById("loadingScreen").style.display = "none";
+            // Reset progress bar and text
+            document.getElementById("progressBarFill").style.width = '0%';
+            document.getElementById("funnyText").innerText = "Let's find some music...";
+        }
+
+        function updateProgressBar() {
+            let progress = 0;
+            progressBarInterval = setInterval(() => {
+                progress += 10;
+                if (progress > 100) progress = 100; // Cap at 100%
+                document.getElementById("progressBarFill").style.width = progress + '%';
+                if (progress === 100) clearInterval(progressBarInterval); // Stop when full
+            }, 1000); // Increase progress every second
+        }
+
+        function changeFunnyText() {
+            let index = 0;
+            textChangeInterval = setInterval(() => {
+                document.getElementById("funnyText").innerText = funnyTexts[index++];
+                if (index >= funnyTexts.length) index = 0; // Loop back to the first text
+            }, 4000); // Change text every 4 seconds
+        }
+
+        </script>
+</body>
+</html>

@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="results-container">
-    <h2>Results for "{{ query }}"</h2>
+    <h3>Results for "{{ query }}"</h3>
+    <div class="playlist-container">
+        <form action="/create_playlist" method="post">
+            <label for="playlistName">Create playlist with all songs below</label>
+            <input type="text" id="playlistName" placeholder="enter playlist name" name="playlist_name" required>
+            <button type="submit">Create Playlist</button>
+        </form>
+    </div>
     <table>
         <tr>
             <th>Song</th>

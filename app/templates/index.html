@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div id="loading"></div>
-<div class="search-container" id="content">
+<div class="search-container" id="content1">
     <h1>Playlist Genie</h1>
     <p>🥳Enter a phrase - Get a playlist🥳</p>
     <form action="/thread" method="post">
@@ -9,21 +9,22 @@
         <br>
         <button type="submit" onclick="loading()">Search</button>
     </form>
-    <!-- <h2>combined word</h2>
+</div>
+<div class="search-container" id="content2">
+    <h3>don't like 1 word song name?
+    <br>Try this!
+    </h3>
     <form action="/search" method="post">
-        <input type="text" name="text" placeholder="Search for a song...">
-        <button type="submit">Search</button>
+        <input type="text" name="text" placeholder="how could we ever just be friend...">
+        <br>
+        <button type="submit" onclick="loading()">Search</button>
     </form>
-    <h2>test threading</h2>
-    <form action="/thread" method="post">
-        <input type="text" name="text" placeholder="Search for a song...">
-        <button type="submit">Search</button>
-    </form> -->
 </div>
 <script type="text/javascript">// <![CDATA[
     function loading(){
         $("#loading").show();
-        $("#content").hide();       
+        $("#content1").hide();
+        $("#content2").hide();    
     }
 // ]]></script>
 {% endblock %}

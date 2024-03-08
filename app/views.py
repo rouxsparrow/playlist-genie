@@ -245,6 +245,8 @@ def search():
 
     # Deduplicate results based on the longest match for each starting word
     final_results = deduplicate_and_sort_results(results, words)
+    valid_results = [res for res in results if res['album_art'] != '/static/images/me_sorry.jpg']
+    session['results'] = valid_results
     global_end_time = time.time()
     logging.info(f"Total time taken: {global_end_time - global_start_time:.2f} seconds")
     return render_template('results.html', songs=final_results, query=text)
@@ -276,7 +278,7 @@ def thread():
 @main.route('/create_playlist', methods=['POST'])
 def create_playlist():
     access_token = get_spotify_token()
-    user_id = 'rouxsparrow'
+    user_id = '31t7z5ewum4ay7l2x5wvath4wj54'
     playlist_name = request.form['playlist_name']
     logging.info(f"Playlist name: {playlist_name}")
     # Create a new playlist
@@ -300,10 +302,11 @@ def create_new_playlist(access_token, user_id, playlist_name):
         "Content-Type": "application/json"
     }
     payload = json.dumps({
-        "name": playlist_name,
-        "description": "Created with Playlist Genie",
-        "public": True
+        'name': playlist_name,
+        'description': 'Created with Playlist Genie | playlistgenie.pythonanywhere.com',
+        'public': True
     })
+
     logging.info(f"Payload: {payload}")
     logging.info(f"Headers: {headers}")
     response = requests.post(endpoint, headers=headers, data=payload)
@@ -327,3 +330,57 @@ def add_songs_to_playlist(access_token, playlist_id, song_uris):
 def get_song_uris_from_session():
     return [song['song_uri'] for song in session['results']]
 
+@main.route('/me', methods=['POST'])
+def me():
+    auth_url = "https://accounts.spotify.com/authorize"
+    response_type = "code"
+    scope = os.getenv('SPOTIFY_SCOPE')
+    logging.info(f"Scope: {scope}")
+    # Build the authorization URL
+    auth_query = urllib.parse.urlencode({
+        "response_type": response_type,
+        "client_id": os.getenv('SPOTIFY_CLIENT_ID'),
+        "scope": scope,
+        "redirect_uri": os.getenv('REDIRECT_URI')
+    })
+
+    return redirect(f"{auth_url}?{auth_query}")
+
+@main.route('/callback', methods=['GET'])
+def callback():
+    code = request.args.get('code')
+    error = request.args.get('error')
+    logging.info(f"Code: {code}")
+    if error:
+        return f"Error: {error}", 400
+
+    # Exchange the code for an access token
+    token_url = "https://accounts.spotify.com/api/token"
+    # headers = {
+    #     "Authorization": f"Basic {os.getenv('SPOTIFY_CLIENT_ID')}:{os.getenv('SPOTIFY_CLIENT_SECRET')}",
+    #     "content-type": "application/x-www-form-urlencoded"
+    # }
+    payload = {
+        "grant_type": "authorization_code",
+        "code": code,
+        "redirect_uri": os.getenv('REDIRECT_URI'),
+        'client_id': os.getenv('SPOTIFY_CLIENT_ID'),
+        'client_secret': os.getenv('SPOTIFY_CLIENT_SECRET'),
+    }
+    response = requests.post(token_url, data=payload)
+    token_info = response.json()
+
+    if 'access_token' in token_info:
+        # Store the access token in a session or a secure place
+        # Write the access token, refresh token, and its expiry time to a file
+        access_token = token_info.get('access_token')
+        refresh_token = token_info.get('refresh_token')
+        expires_in = token_info.get('expires_in', 3600)  # Use default 1 hour if not provided
+        expiry_time = datetime.now() + timedelta(seconds=expires_in)
+        with open(os.getenv('TOKEN_FILE_PATH'), 'w') as token_file:
+            token_file.write(access_token + '\n')
+            token_file.write(refresh_token + '\n')  # Store the refresh token
+            token_file.write(str(expiry_time.timestamp()))
+        return redirect('/index') 
+    else:
+        return "Failed to get access token", 400

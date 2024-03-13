@@ -245,7 +245,7 @@ def search():
 
     # Deduplicate results based on the longest match for each starting word
     final_results = deduplicate_and_sort_results(results, words)
-    valid_results = [res for res in results if res['album_art'] != '/static/images/me_sorry.jpg']
+    valid_results = [res for res in final_results if res['album_art'] != '/static/images/me_sorry.jpg']
     session['results'] = valid_results
     global_end_time = time.time()
     logging.info(f"Total time taken: {global_end_time - global_start_time:.2f} seconds")
